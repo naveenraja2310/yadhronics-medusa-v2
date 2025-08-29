@@ -2,6 +2,10 @@ const checkEnvVariables = require("./check-env-variables")
 
 checkEnvVariables()
 
+const S3_FILE_URL = process.env.S3_FILE_URL
+const urlObj = S3_FILE_URL ? new URL(S3_FILE_URL) : null;
+const s3Hostname = urlObj?.hostname || "";
+
 /**
  * @type {import('next').NextConfig}
  */
@@ -35,6 +39,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: s3Hostname,
       },
     ],
   },
