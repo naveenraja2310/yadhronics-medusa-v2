@@ -20,7 +20,7 @@ export default async function Footer() {
               href="/"
               className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
             >
-              Medusa Store
+              Yadhronics
             </LocalizedClientLink>
           </div>
           <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
@@ -109,48 +109,59 @@ export default async function Footer() {
               </div>
             )}
             <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
+              <span className="txt-small-plus txt-ui-fg-base">Quick Links</span>
               <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
                 <li>
                   <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/contact"
                     className="hover:text-ui-fg-base"
                   >
-                    GitHub
+                    Contact Us
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/privacy"
                     className="hover:text-ui-fg-base"
                   >
-                    Documentation
+                    Privacy Policy
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
+                    href="/cancellation-refund"
                     className="hover:text-ui-fg-base"
                   >
-                    Source code
+                    Cancellation & Refund
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/shipdeliverypolicy"
+                    className="hover:text-ui-fg-base"
+                  >
+                    Shipping Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/terms"
+                    className="hover:text-ui-fg-base"
+                  >
+                    Terms & Conditions
                   </a>
                 </li>
               </ul>
             </div>
+
           </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
+        {/* <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
           <Text className="txt-compact-small">
             © {new Date().getFullYear()} Medusa Store. All rights reserved.
           </Text>
           <MedusaCTA />
-        </div>
+        </div> */}
       </div>
     </footer>
   )

@@ -1,36 +1,51 @@
-import { Github } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+"use client";
+import { useEffect, useState } from "react";
+
+const images = ["https://d19u8jta4am29c.cloudfront.net/quality.png", "https://d19u8jta4am29c.cloudfront.net/bestplace.png"];
 
 const Hero = () => {
-  return (
-    <div className="h-[75vh] w-full border-b border-ui-border-base relative bg-ui-bg-subtle">
-      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center small:p-32 gap-6">
-        <span>
-          <Heading
-            level="h1"
-            className="text-3xl leading-10 text-ui-fg-base font-normal"
-          >
-            Ecommerce Starter Template
-          </Heading>
-          <Heading
-            level="h2"
-            className="text-3xl leading-10 text-ui-fg-subtle font-normal"
-          >
-            Powered by Medusa and Next.js
-          </Heading>
-        </span>
-        <a
-          href="https://github.com/medusajs/nextjs-starter-medusa"
-          target="_blank"
-        >
-          <Button variant="secondary">
-            View on GitHub
-            <Github />
-          </Button>
-        </a>
-      </div>
-    </div>
-  )
-}
+  const [current, setCurrent] = useState(0);
+  const [fade, setFade] = useState(true);
 
-export default Hero
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); // start fade-out
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % images.length);
+        setFade(true); // fade back in
+      }, 500); // fade duration
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div
+      style={{
+        margin: "20px",
+        borderRadius: "12px",
+        overflow: "hidden",
+        minHeight: "320px",
+        boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+        position: "relative",
+      }}
+    >
+      <img
+        src={images[current]}
+        alt="Hero"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          transition: "opacity 0.5s ease-in-out",
+          opacity: fade ? 1 : 0,
+        }}
+      />
+    </div>
+  );
+};
+
+export default Hero;

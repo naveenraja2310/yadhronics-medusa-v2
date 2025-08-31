@@ -24,13 +24,13 @@ export default function CheckoutLayout({
               Back
             </span>
           </LocalizedClientLink>
-          <LocalizedClientLink
+          {/* <LocalizedClientLink
             href="/"
             className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
             data-testid="store-link"
           >
             Medusa Store
-          </LocalizedClientLink>
+          </LocalizedClientLink> */}
           <div className="flex-1 basis-0" />
         </nav>
       </div>

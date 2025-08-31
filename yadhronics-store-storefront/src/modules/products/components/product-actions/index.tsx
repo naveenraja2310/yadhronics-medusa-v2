@@ -54,6 +54,8 @@ export default function ProductActions({
     })
   }, [product.variants, options])
 
+  console.log("selectedVariant", selectedVariant)
+
   // update the options when a variant is selected
   const setOptionValue = (optionId: string, value: string) => {
     setOptions((prev) => ({
