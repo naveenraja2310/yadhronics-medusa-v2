@@ -5,6 +5,7 @@ loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
+    redisUrl: process.env.REDIS_URL,
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
@@ -27,6 +28,26 @@ module.exports = defineConfig({
               secret_access_key: process.env.S3_SECRET_ACCESS_KEY!,
               region: process.env.S3_REGION!,
               bucket: process.env.S3_BUCKET!,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: "@medusajs/medusa/payment",
+      options: {
+        providers: [
+          {
+            resolve: "@tsc_tech/medusa-plugin-razorpay-payment/providers/razorpay",
+            id: "razorpay",
+            options: {
+              key_id: process.env.RAZORPAY_ID,
+              key_secret: process.env.RAZORPAY_SECRET,
+              razorpay_account: process.env.RAZORPAY_ACCOUNT,
+              webhook_secret: process.env.RAZORPAY_WEBHOOK_SECRET,
+              automatic_expiry_period: 30, // 12 min – 30 days in minutes
+              manual_expiry_period: 20,
+              refund_speed: "normal",
             },
           },
         ],

@@ -47,8 +47,14 @@ const Payment = ({
       await initiatePaymentSession(cart, {
         provider_id: method,
       })
+    }else{
+      console.log("Initiating payment for non-Stripe method:", method)
+      await initiatePaymentSession(cart, {
+        provider_id: method,
+      })
     }
   }
+
 
   const paidByGiftcard =
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
@@ -84,6 +90,9 @@ const Payment = ({
       if (!checkActiveSession) {
         await initiatePaymentSession(cart, {
           provider_id: selectedPaymentMethod,
+          data: {
+            cart,
+          },
         })
       }
 
