@@ -14,6 +14,13 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
   },
+  admin: {
+    vite: (config) => {
+      config.server = config.server || {};
+      config.server.allowedHosts = ['app.yadhronics.com'];
+      return config;
+    },
+  },
   modules: [
     {
       resolve: "@medusajs/medusa/file",
