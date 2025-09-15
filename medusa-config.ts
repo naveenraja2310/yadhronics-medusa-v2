@@ -17,7 +17,7 @@ module.exports = defineConfig({
   admin: {
     vite: (config) => {
       config.server = config.server || {};
-      config.server.allowedHosts = ['app.yadhronics.com'];
+      config.server.allowedHosts = ['admin.yadhronics.com'];
       return config;
     },
   },
