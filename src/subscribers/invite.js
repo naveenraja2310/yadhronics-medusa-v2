@@ -33,7 +33,7 @@ export default async function handler(payload) {
             <p>
                 Click the button below to accept the invite:
             </p>
-            <a href="${process.env.MEDUSA_BACKEND_URL}/invite?token=${invite.token}" 
+            <a href="${process.env.MEDUSA_BACKEND_URL}/app/invite?token=${invite.token}" 
                 style="display:inline-block; padding: 10px 20px; margin: 10px 0; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
                 Accept Invite
             </a>

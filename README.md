@@ -71,3 +71,7 @@ npm run build
 keep .env
 npm i
 npm run start
+
+pm2 delete medusa-app
+pm2 start npm --name "medusa-app" -- start
+pm2 logs medusa-app
