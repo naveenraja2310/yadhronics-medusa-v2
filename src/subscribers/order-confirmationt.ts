@@ -1,5 +1,4 @@
 import { SubscriberArgs, type SubscriberConfig } from "@medusajs/framework"
-import nodemailer from "nodemailer"
 
 export default async function orderPlacedHandler({
   event: { data },
@@ -7,8 +6,7 @@ export default async function orderPlacedHandler({
 }: SubscriberArgs<{
   id: string
 }>) {
-    const notificationModuleService = container.resolve("notification")
-  console.log("Order confirmation handler invoked with payload:", data)
+  const notificationModuleService = container.resolve("notification")
 
   const orderId = data.id
 
@@ -36,23 +34,10 @@ export default async function orderPlacedHandler({
 
   const [order] = await query
 
-  console.log("Retrieved order:", order)
-
   if (!order || !order.customer?.email) {
     console.error("Order or customer email not found")
     return
   }
-
-  // ✅ Nodemailer config
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT),
-    secure: process.env.SMTP_SECURE === "true",
-    auth: {
-      user: process.env.SMTP_AUTH_USER,
-      pass: process.env.SMTP_AUTH_PASS,
-    },
-  })
 
   // ✅ Helpers
   const formatAmount = (val: any, currency = "INR") => {
