@@ -75,3 +75,6 @@ npm run start
 pm2 delete medusa-app
 pm2 start npm --name "medusa-app" -- start
 pm2 logs medusa-app
+
+ssl_certificate     /etc/letsencrypt/live/blog.yadhronics.com/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/blog.yadhronics.com/privkey.pem;
