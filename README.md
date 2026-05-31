@@ -78,3 +78,8 @@ pm2 logs medusa-app
 
 ssl_certificate     /etc/letsencrypt/live/blog.yadhronics.com/fullchain.pem;
 ssl_certificate_key /etc/letsencrypt/live/blog.yadhronics.com/privkey.pem;
+
+npx medusa db:setup
+npx medusa db:migrate
+
+npx medusa user -e naveenraja2310@gmail.com -p 123
